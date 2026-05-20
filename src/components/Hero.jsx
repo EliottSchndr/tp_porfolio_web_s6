@@ -1,3 +1,6 @@
+import {Component} from "react";
+import { Button } from "./Button.jsx"
+
 export const Hero = ({name}) => {
     return (
         <section className="flex flex-col md:flex-row items-center justify-between px-10 py-20 bg-white">
@@ -9,15 +12,17 @@ export const Hero = ({name}) => {
                     Hello, my name is {name}
                 </h1>
                 <p className="text-font-medium-emphasis font-nunito text-lg max-w-md">
-                    Short text with details about you, what you do or your professional career. You can add more information on the about page.                </p>
+                    Short text with details about you, what you do or your professional career. You can add more
+                    information on the about page. </p>
                 <div className="flex gap-4">
-                    <button className="bg-brand-yellow text-font-high-emphasis px-6 py-2 rounded font-roboto font-medium">Projects</button>
-                    <button className="border-2 border-font-high-emphasis text-font-high-emphasis px-6 py-2 rounded font-roboto font-medium">LinkedIn</button>
+                    <Button title="Projects" style="bg-brand-yellow text-font-high-emphasis px-6 py-2 rounded-[8px] font-roboto font-medium"/>
+                    <Button title="LinkedIn" style="border-2 border-font-high-emphasis text-font-high-emphasis px-6 py-2 rounded-[8px] font-roboto font-medium"/>
                 </div>
             </div>
 
             <div className="md:w-1/2 mt-12 md:mt-0 relative flex justify-center">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-yellow rounded-full filter blur-3xl opacity-20 -z-10"></div>
+                <div
+                    className="absolute top-0 right-0 w-64 h-64 bg-brand-yellow rounded-full filter blur-3xl opacity-20 -z-10"></div>
                 <img
                     src="/path-to-madelyn.png"
                     alt="Madelyn Torff"
