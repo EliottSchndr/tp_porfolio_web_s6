@@ -1,8 +1,10 @@
+import { Navbar } from './components/Navbar.jsx'
+
 function App() {
 
   return (
     <>
-      <p className="font-comfortaa">Hello</p>
+        <Navbar name="Eliott Schneider" />
     </>
   )
 }
