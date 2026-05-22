@@ -1,5 +1,6 @@
 import { Navbar } from './components/Navbar.jsx';
 import { Hero } from './components/Hero.jsx';
+import { TitleLine } from './components/TitleLine.jsx';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
             </header>
             <main>
                 <Hero name={ name }/>
+                <TitleLine name="Project"/>
             </main>
         </div>
     </>
