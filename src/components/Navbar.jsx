@@ -1,6 +1,6 @@
 export const Navbar = ({name}) => {
     return (
-        <nav className="flex justify-between items-center py-6 px-10 bg-white">
+        <nav className="flex justify-between items-center py-6 px-10">
             <div className="font-comfortaa font-bold text-xl text-font-high-emphasis text-[18px]">
                 {name}
             </div>
