@@ -2,7 +2,7 @@ import { Navbar } from './components/Navbar.jsx';
 import { Hero } from './components/Hero.jsx';
 import {Projects} from "./components/Projects.jsx";
 import {Form} from "./components/Form.jsx";
-import {Logos} from "./components/Logos.jsx";
+import {Footer} from "./components/Footer.jsx";
 
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
                 <Hero name={ name }/>
                 <Projects projects={projects}/>
                 <Form />
-                <Logos logos={logos}/>
+                <Footer name={name} logos={logos}/>
             </main>
         </div>
     </>
