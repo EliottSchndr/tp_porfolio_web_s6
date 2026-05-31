@@ -1,7 +1,7 @@
 import { Navbar } from './components/Navbar.jsx';
 import { Hero } from './components/Hero.jsx';
-import { TitleLine } from './components/TitleLine.jsx';
 import {Projects} from "./components/Projects.jsx";
+import {Form} from "./components/Form.jsx";
 
 
 function App() {
@@ -36,6 +36,7 @@ function App() {
             <main>
                 <Hero name={ name }/>
                 <Projects projects={projects}/>
+                <Form />
             </main>
         </div>
     </>
