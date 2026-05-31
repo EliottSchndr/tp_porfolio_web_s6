@@ -29,7 +29,7 @@ export const Hero = ({ name }) => {
 
             <Button
               title="LinkedIn"
-              style="border-2 border-font-high-emphasis text-font-high-emphasis px-8 py-3 rounded-[8px] font-roboto font-bold hover:bg-font-high-emphasis hover:text-white transition-all cursor-pointer"
+              style="border-2 border-font-high-emphasis text-font-high-emphasis px-8 py-3 rounded-[8px] font-roboto font-bold hover:bg-brand-yellow hover:text-white transition-all cursor-pointer"
             />
           </div>
         </div>
