@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useProjects } from '../../context/ProjectsContext.jsx';
 import AdminLayout from '../../layouts/AdminLayout.jsx';
+import ConfirmModal from '../../components/ConfirmModal.jsx';
 
 const EMPTY_FORM = { title: '', description: '', image: '' };
 
@@ -8,6 +9,7 @@ function ProjectsPage() {
     const { projects, addProject, updateProject, deleteProject } = useProjects();
     const [form, setForm] = useState(EMPTY_FORM);
     const [editingId, setEditingId] = useState(null);
+    const [confirmId, setConfirmId] = useState(null);
 
     const handleChange = (e) => {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -35,6 +37,14 @@ function ProjectsPage() {
     };
 
     return (
+        <>
+        {confirmId !== null && (
+            <ConfirmModal
+                message="Êtes-vous sûr de vouloir supprimer ce projet ?"
+                onConfirm={() => { deleteProject(confirmId); setConfirmId(null); }}
+                onCancel={() => setConfirmId(null)}
+            />
+        )}
         <AdminLayout>
             <div className="max-w-4xl mx-auto flex flex-col gap-8">
                 <h1 className="font-[Playfair_Display] text-3xl font-bold text-[var(--color-font-high-emphasis)]">
@@ -130,7 +140,7 @@ function ProjectsPage() {
                                     Modifier
                                 </button>
                                 <button
-                                    onClick={() => deleteProject(project.id)}
+                                    onClick={() => setConfirmId(project.id)}
                                     className="font-[Nunito] text-sm text-red-400 hover:text-red-600 transition-colors"
                                 >
                                     Supprimer
@@ -141,6 +151,7 @@ function ProjectsPage() {
                 </div>
             </div>
         </AdminLayout>
+        </>
     );
 }
 
