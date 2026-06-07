@@ -3,16 +3,18 @@ import { createContext, useContext, useReducer } from 'react';
 const AuthContext = createContext(null);
 
 const initialState = {
-    user: null,
-    isAuthenticated: false,
+    user: JSON.parse(localStorage.getItem('auth_user')) ?? null,
+    isAuthenticated: localStorage.getItem('auth_user') !== null,
 };
 
 function authReducer(state, action) {
     switch (action.type) {
         case 'LOGIN':
+            localStorage.setItem('auth_user', JSON.stringify(action.payload));
             return { user: action.payload, isAuthenticated: true };
         case 'LOGOUT':
-            return initialState;
+            localStorage.removeItem('auth_user');
+            return { user: null, isAuthenticated: false };
         default:
             return state;
     }

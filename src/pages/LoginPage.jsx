@@ -21,14 +21,14 @@ function LoginPage() {
             lastName: decoded.family_name,
             email: decoded.email,
         });
-        navigate('/');
+        navigate('/admin/contacts');
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (email === MOCK_CREDENTIALS.email && password === MOCK_CREDENTIALS.password) {
             login(MOCK_USER);
-            navigate('/');
+            navigate('/admin/contacts');
         } else {
             setError('Email ou mot de passe incorrect.');
         }

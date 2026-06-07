@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './context/AuthContext.jsx';
+import { ContactsProvider } from './context/ContactsContext.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID ?? '';
@@ -22,6 +23,7 @@ function PageLoader() {
 function App() {
     return (
         <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+        <ContactsProvider>
         <AuthProvider>
             <BrowserRouter>
                 <Suspense fallback={<PageLoader />}>
@@ -41,6 +43,7 @@ function App() {
                 </Suspense>
             </BrowserRouter>
         </AuthProvider>
+        </ContactsProvider>
         </GoogleOAuthProvider>
     );
 }
