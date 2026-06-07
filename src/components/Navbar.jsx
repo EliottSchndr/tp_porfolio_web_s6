@@ -19,6 +19,9 @@ export const Navbar = ({ name }) => {
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
+                {isAuthenticated && (
+                    <li><Link to="/admin/projects">Admin</Link></li>
+                )}
                 <li>
                     {isAuthenticated ? (
                         <button onClick={handleLogout}>Déconnexion</button>

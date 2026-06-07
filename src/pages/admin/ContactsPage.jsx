@@ -1,37 +1,19 @@
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext.jsx';
 import { useContacts } from '../../context/ContactsContext.jsx';
+import AdminLayout from '../../layouts/AdminLayout.jsx';
 
 function ContactsPage() {
-    const { user, logout } = useAuth();
     const { messages, markRead } = useContacts();
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        logout();
-        navigate('/');
-    };
 
     return (
-        <div className="min-h-screen bg-[var(--color-bg-gray)] p-8">
-            <div className="max-w-4xl mx-auto">
-                <div className="flex items-center justify-between mb-8">
-                    <div>
-                        <h1 className="font-[Playfair_Display] text-3xl font-bold text-[var(--color-font-high-emphasis)]">
-                            Contacts
-                        </h1>
-                        <p className="font-[Nunito] text-sm text-[var(--color-font-medium-emphasis)] mt-1">
-                            {messages.filter(m => !m.read).length} non lu(s)
-                        </p>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <span className="font-[Nunito] text-sm text-[var(--color-font-medium-emphasis)]">
-                            {user?.firstName} {user?.lastName}
-                        </span>
-                        <button onClick={handleLogout} className="font-[Nunito] text-sm text-[var(--color-font-medium-emphasis)] hover:text-[var(--color-font-high-emphasis)] transition-colors">
-                            Déconnexion
-                        </button>
-                    </div>
+        <AdminLayout>
+            <div className="max-w-4xl mx-auto flex flex-col gap-6">
+                <div>
+                    <h1 className="font-[Playfair_Display] text-3xl font-bold text-[var(--color-font-high-emphasis)]">
+                        Contacts
+                    </h1>
+                    <p className="font-[Nunito] text-sm text-[var(--color-font-medium-emphasis)] mt-1">
+                        {messages.filter(m => !m.read).length} non lu(s)
+                    </p>
                 </div>
 
                 {messages.length === 0 ? (
@@ -46,20 +28,18 @@ function ContactsPage() {
                                 onClick={() => markRead(msg.id)}
                                 className={`bg-white rounded-2xl shadow p-6 cursor-pointer transition-opacity ${msg.read ? 'opacity-60' : 'opacity-100'}`}
                             >
-                                <div className="flex items-center justify-between mb-2">
-                                    <div className="flex items-center gap-3">
-                                        {!msg.read && (
-                                            <span className="w-2 h-2 rounded-full bg-[var(--color-brand-yellow)] inline-block" />
-                                        )}
-                                        <span className="font-[Nunito] font-bold text-[var(--color-font-high-emphasis)]">
-                                            {msg.name}
-                                        </span>
-                                        <span className="font-[Nunito] text-sm text-[var(--color-font-medium-emphasis)]">
-                                            {msg.email}
-                                        </span>
-                                    </div>
+                                <div className="flex items-center gap-3 mb-2">
+                                    {!msg.read && (
+                                        <span className="w-2 h-2 rounded-full bg-[var(--color-brand-yellow)] flex-shrink-0" />
+                                    )}
+                                    <span className="font-[Nunito] font-bold text-[var(--color-font-high-emphasis)]">
+                                        {msg.name}
+                                    </span>
+                                    <span className="font-[Nunito] text-sm text-[var(--color-font-medium-emphasis)]">
+                                        {msg.email}
+                                    </span>
                                 </div>
-                                <p className="font-[Nunito] text-[var(--color-font-medium-emphasis)] text-sm leading-relaxed">
+                                <p className="font-[Nunito] text-sm text-[var(--color-font-medium-emphasis)] leading-relaxed">
                                     {msg.message}
                                 </p>
                             </div>
@@ -67,7 +47,7 @@ function ContactsPage() {
                     </div>
                 )}
             </div>
-        </div>
+        </AdminLayout>
     );
 }
 
