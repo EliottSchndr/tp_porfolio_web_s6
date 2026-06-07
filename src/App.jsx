@@ -1,7 +1,14 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { AuthProvider } from './context/AuthContext.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID ?? '';
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'));
+const LoginPage = lazy(() => import('./pages/LoginPage.jsx'));
+const ContactsPage = lazy(() => import('./pages/admin/ContactsPage.jsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
 
 function PageLoader() {
@@ -14,14 +21,27 @@ function PageLoader() {
 
 function App() {
     return (
-        <BrowserRouter>
-            <Suspense fallback={<PageLoader />}>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-            </Suspense>
-        </BrowserRouter>
+        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+        <AuthProvider>
+            <BrowserRouter>
+                <Suspense fallback={<PageLoader />}>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route
+                            path="/admin/contacts"
+                            element={
+                                <ProtectedRoute>
+                                    <ContactsPage />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
+                </Suspense>
+            </BrowserRouter>
+        </AuthProvider>
+        </GoogleOAuthProvider>
     );
 }
 
