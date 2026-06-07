@@ -40,7 +40,7 @@ export const Form = () => {
     };
 
     return (
-        <div id={"Contact"} className="flex flex-col justify-center items-center w-full my-8">
+        <div id="contact" className="flex flex-col justify-center items-center w-full my-8">
             <TitleLine name="Contact" />
             <form className="flex flex-col w-full max-w-lg gap-4 mt-8 p-6 font-nunito text-font-high-emphasis" onSubmit={handleSubmit}>
 

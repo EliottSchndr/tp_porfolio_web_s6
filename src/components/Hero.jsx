@@ -5,7 +5,7 @@ import { HeroImage } from "./HeroImage.jsx";
 
 export const Hero = ({ name }) => {
   return (
-    <section className="mt-16">
+    <section id="about" className="mt-16">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-10 py-20 gap-8">
         <div className="md:w-1/2 space-y-8">
           <h2 className="text-brand-yellow font-nunito font-bold uppercase tracking-[0.2em] text-sm">
