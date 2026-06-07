@@ -4,6 +4,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { ContactsProvider } from './context/ContactsContext.jsx';
 import { ProjectsProvider } from './context/ProjectsContext.jsx';
+import { TestimonialsProvider } from './context/TestimonialsContext.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import PageSkeleton from './components/PageSkeleton.jsx';
 
@@ -20,6 +21,7 @@ function App() {
     return (
         <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         <ProjectsProvider>
+        <TestimonialsProvider>
         <ContactsProvider>
         <AuthProvider>
             <BrowserRouter>
@@ -50,6 +52,7 @@ function App() {
             </BrowserRouter>
         </AuthProvider>
         </ContactsProvider>
+        </TestimonialsProvider>
         </ProjectsProvider>
         </GoogleOAuthProvider>
     );

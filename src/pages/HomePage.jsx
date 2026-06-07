@@ -4,6 +4,7 @@ import { Projects } from '../components/Projects.jsx';
 import { Form } from '../components/Form.jsx';
 import { Footer } from '../components/Footer.jsx';
 import { useProjects } from '../context/ProjectsContext.jsx';
+import { Testimonials } from '../components/Testimonials.jsx';
 
 const name = "Eliott Schneider";
 
@@ -24,6 +25,7 @@ function HomePage() {
             <main>
                 <Hero name={name} />
                 <Projects projects={projects} />
+                <Testimonials />
                 <Form />
                 <Footer name={name} logos={logos} />
             </main>
