@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import {Button} from "./Button.jsx";
-export const ProjectItem = ({ imageFirst=false ,title, description, image }) => {
+export const ProjectItem = ({ id, imageFirst=false ,title, description, image }) => {
     return (
         <div className="bg-bg-white rounded-3xl overflow-hidden flex flex-col md:flex-row w-full max-w-5xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] mx-auto md:h-[524px]">
 
@@ -22,7 +23,9 @@ export const ProjectItem = ({ imageFirst=false ,title, description, image }) => 
                     {description}
                 </p>
 
-                <Button title="view project" onClick="" style="border-2 border-font-high-emphasis text-font-high-emphasis px-8 py-3 rounded-[8px] font-roboto font-bold hover:bg-brand-yellow hover:text-white transition-all cursor-pointer" />
+                <Link to={`/projects/${id}`}>
+                    <Button title="view project" style="border-2 border-font-high-emphasis text-font-high-emphasis px-8 py-3 rounded-[8px] font-roboto font-bold hover:bg-brand-yellow hover:text-white transition-all cursor-pointer" />
+                </Link>
 
             </div>
 

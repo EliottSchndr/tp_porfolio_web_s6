@@ -7,8 +7,7 @@ export const Projects = ({projects}) => {
             <TitleLine name="Projects" />
             {projects.map((project, i) => {
                 return (
-                    <ProjectItem imageFirst={i % 2 !== 0} title={project.title} description={project.description}
-                                 image={project.image} link={project.link} key={project.id}/>
+                    <ProjectItem key={project.id} id={project.id} imageFirst={i % 2 !== 0} title={project.title} description={project.description} image={project.image} />
                 )
             })}
 

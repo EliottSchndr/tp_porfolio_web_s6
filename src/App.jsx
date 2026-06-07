@@ -13,6 +13,7 @@ const HomePage = lazy(() => import('./pages/HomePage.jsx'));
 const LoginPage = lazy(() => import('./pages/LoginPage.jsx'));
 const ProjectsPage = lazy(() => import('./pages/admin/ProjectsPage.jsx'));
 const ContactsPage = lazy(() => import('./pages/admin/ContactsPage.jsx'));
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage.jsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
                                 </ProtectedRoute>
                             }
                         />
+                        <Route path="/projects/:id" element={<ProjectDetailPage />} />
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Suspense>
